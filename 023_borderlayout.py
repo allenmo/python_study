@@ -11,7 +11,7 @@ class BorderLayout(QtGui.QLayout):
     West, North, South, East, Center = range(5)
     MinimumSize, SizeHint = range(2)
 
-    def __init__(self, parent=None, margin=0, spacing=-1):
+    def __init__(self, parent=None, margin=10, spacing=20):
         super(BorderLayout, self).__init__(parent)
 
         self.setMargin(margin)
@@ -110,6 +110,7 @@ class BorderLayout(QtGui.QLayout):
         self.list.append(ItemWrapper(item, position))
 
     def calculateSize(self, sizeType):
+        print("in CalculateSize")
         totalSize = QtCore.QSize()
 
         for wrapper in self.list:
@@ -132,10 +133,10 @@ class Window(QtGui.QWidget):
     def __init__(self):
         super(Window, self).__init__()
 
+        layout = BorderLayout()
+
         centralWidget = QtGui.QTextBrowser()
         centralWidget.setPlainText("Central widget")
-
-        layout = BorderLayout()
         layout.addWidget(centralWidget, BorderLayout.Center)
 
         label_n = self.createLabel("North")
@@ -159,7 +160,7 @@ class Window(QtGui.QWidget):
 
     def createLabel(self, text):
         label = QtGui.QLabel(text)
-        label.setFrameStyle(QtGui.QFrame.Box | QtGui.QFrame.Raised)
+        label.setFrameStyle(QtGui.QFrame.Panel | QtGui.QFrame.Raised)
         return label
 
 

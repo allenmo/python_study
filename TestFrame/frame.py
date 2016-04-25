@@ -5,6 +5,21 @@ import RPi.GPIO as GPIO
 import time
 import threading
 
+class ledThread(threading.Thread):
+    def __init__(self):
+        threading.Thread.__init__(self)
+
+    def run(self):
+        GPIO.setmode(GPIO.BOARD)
+        GPIO.setup(11,GPIO.OUT)
+        for i in range(30):
+            GPIO.output(11,True)
+            time.sleep(0.05)
+            GPIO.output(11,False)
+            time.sleep(0.05)
+ 
+
+
 class MainWindow(QtGui.QMainWindow):
     def __init__(self):
         super(MainWindow, self).__init__()
@@ -78,13 +93,17 @@ class MainWindow(QtGui.QMainWindow):
 
     def runTest(self):
         self.infoLabel.setText("Invoked <b>Test|Run</b>")
+        thread1 = ledThread()
+        thread1.start()
+
+    '''def led(self):
         GPIO.setmode(GPIO.BOARD)
         GPIO.setup(11,GPIO.OUT)
         for i in range(30):
             GPIO.output(11,True)
             time.sleep(0.05)
             GPIO.output(11,False)
-            time.sleep(0.05)
+            time.sleep(0.05)'''
         #GPIO.cleanup()
 
     def createActions(self):

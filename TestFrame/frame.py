@@ -49,6 +49,7 @@ class MainWindow(QtGui.QMainWindow):
 
         self.createActions()
         self.createMenu()
+        self.createToolBars()
 
         message = "A context menu is availabel by right-clicking"
         self.statusBar().showMessage(message)
@@ -93,9 +94,11 @@ class MainWindow(QtGui.QMainWindow):
 
     def runTest(self):
         self.infoLabel.setText("Invoked <b>Test|Run</b>")
-        thread1 = ledThread()
-        thread1.start()
+        self.thread1 = ledThread()
+        self.thread1.start()
 
+    def stopTest(self):
+        self.thread1.stop()
     '''def led(self):
         GPIO.setmode(GPIO.BOARD)
         GPIO.setup(11,GPIO.OUT)
@@ -112,6 +115,11 @@ class MainWindow(QtGui.QMainWindow):
                 shortcut="Alt+R",
                 statusTip="Run test", triggered=self.runTest,
                 icon=QtGui.QIcon('images/start_48X48.png'))
+
+        self.stopTestAct = QtGui.QAction("&StopTest", self,
+                shortcut="Alt+S",
+                statusTip="Stop test", triggered= self.stopTest,
+                icon=QtGui.QIcon('images/stop.png'))
 
         self.exitAct = QtGui.QAction("E&xit", self, shortcut="Ctrl+Q",
                 statusTip="Exit the application", triggered=self.close)
@@ -158,6 +166,7 @@ class MainWindow(QtGui.QMainWindow):
     def createMenu(self):
         self.fileMenu = self.menuBar().addMenu("&Test")
         self.fileMenu.addAction(self.runTestAct)
+        self.fileMenu.addAction(self.stopTestAct)
         self.fileMenu.addAction(self.exitAct)
 
         self.editMenu = self.menuBar().addMenu("&Edit")
@@ -173,6 +182,10 @@ class MainWindow(QtGui.QMainWindow):
         self.helpMenu.addAction(self.aboutAct)
         self.helpMenu.addAction(self.aboutQtAct)
 
+    def createToolBars(self):
+        self.testToolBar = self.addToolBar("Test")
+        self.testToolBar.addAction(self.runTestAct)
+        self.testToolBar.addAction(self.stopTestAct)
 
 if __name__ == '__main__':
 

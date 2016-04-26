@@ -14,9 +14,10 @@ class ledThread(threading.Thread):
         GPIO.setup(11,GPIO.OUT)
         for i in range(30):
             GPIO.output(11,True)
-            time.sleep(0.05)
+            time.sleep(0.5)
             GPIO.output(11,False)
-            time.sleep(0.05)
+            time.sleep(0.5)
+        window.runIconReset()
  
 
 
@@ -93,28 +94,24 @@ class MainWindow(QtGui.QMainWindow):
         self.infoLabel.setText("Invoked <b>Help|About Qt</b>")
 
     def runTest(self):
+        self.runTestAct.setIcon(QtGui.QIcon('images/running.png'))
         self.infoLabel.setText("Invoked <b>Test|Run</b>")
         self.thread1 = ledThread()
         self.thread1.start()
 
     def stopTest(self):
         self.thread1.stop()
-    '''def led(self):
-        GPIO.setmode(GPIO.BOARD)
-        GPIO.setup(11,GPIO.OUT)
-        for i in range(30):
-            GPIO.output(11,True)
-            time.sleep(0.05)
-            GPIO.output(11,False)
-            time.sleep(0.05)'''
-        #GPIO.cleanup()
+       #GPIO.cleanup()
+
+    def runIconReset(self):
+        self.runTestAct.setIcon(QtGui.QIcon('images/run.png'))
 
     def createActions(self):
         #----------Test menu-------------
         self.runTestAct = QtGui.QAction("&RunTest", self,
                 shortcut="Alt+R",
                 statusTip="Run test", triggered=self.runTest,
-                icon=QtGui.QIcon('images/start_48X48.png'))
+                icon=QtGui.QIcon('images/run.png'))
 
         self.stopTestAct = QtGui.QAction("&StopTest", self,
                 shortcut="Alt+S",
@@ -186,6 +183,7 @@ class MainWindow(QtGui.QMainWindow):
         self.testToolBar = self.addToolBar("Test")
         self.testToolBar.addAction(self.runTestAct)
         self.testToolBar.addAction(self.stopTestAct)
+        self.testToolBar.setMovable(False)
 
 if __name__ == '__main__':
 

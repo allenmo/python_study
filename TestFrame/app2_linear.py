@@ -1,5 +1,20 @@
-from PyQt4.QtGui import QDialog, QMainWindow
+from PyQt4.QtGui import QMainWindow
 from ui_linear import Ui_MainWindow
+from PyQt4 import QtCore, QtGui
+try:
+    _fromUtf8 = QtCore.QString.fromUtf8
+except AttributeError:
+    def _fromUtf8(s):
+        return s
+
+try:
+    _encoding = QtGui.QApplication.UnicodeUTF8
+    def _translate(context, text, disambig):
+        return QtGui.QApplication.translate(context, text, disambig, _encoding)
+except AttributeError:
+    def _translate(context, text, disambig):
+        return QtGui.QApplication.translate(context, text, disambig)
+
 
 class MyMainWindow(QMainWindow):
     def  __init__(self):
@@ -7,8 +22,20 @@ class MyMainWindow(QMainWindow):
 
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
+        
+        self.initTest = InitTest()
+        self.ui.lineEditComputerID.setText(_translate("MainWindow", self.initTest.get_mac_address(), None))
+        
+class InitTest():
+    #def __init__(self):
+        
+    def get_mac_address(self):
+        import uuid
+        node = uuid.getnode()
+        mac = uuid.UUID(int = node).hex[-12:]
+        return mac
 
-        self.ui.okButton.clicked.connect(self.ui.lineEdit.clear)
+
         
 if __name__ == '__main__':
     from PyQt4 import QtGui

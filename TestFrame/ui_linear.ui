@@ -73,7 +73,7 @@
      <string>Cancel</string>
     </property>
    </widget>
-   <widget class="QWidget" name="">
+   <widget class="QWidget" name="layoutWidget">
     <property name="geometry">
      <rect>
       <x>17</x>
@@ -387,6 +387,29 @@
       </layout>
      </item>
     </layout>
+   </widget>
+   <widget class="QTextEdit" name="textEditMsg">
+    <property name="geometry">
+     <rect>
+      <x>760</x>
+      <y>60</y>
+      <width>251</width>
+      <height>651</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_2">
+    <property name="geometry">
+     <rect>
+      <x>760</x>
+      <y>40</y>
+      <width>64</width>
+      <height>17</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Message:</string>
+    </property>
    </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">

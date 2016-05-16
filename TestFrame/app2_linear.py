@@ -33,6 +33,7 @@ class MyMainWindow(QMainWindow):
         self.testInfo = TestInfo()
         self.ui.lineEditStation.setText(_translate("MainWindow", self.testInfo.station, None))
         self.ui.lineEditFixtureSN.setText(_translate("MainWindow", self.testInfo.fixtureSN, None))
+        self.ui.labelSoftwareNameVersion.setText(_translate("MainWindow", self.testInfo.softwareName + "(V" + self.testInfo.softwareVersion + ")", None))
         
 class InitTest():
     #def __init__(self):
@@ -45,8 +46,11 @@ class InitTest():
 
 class ProductInfo():
     def __init__(self):
-        import ConfigParser
-        conf = ConfigParser.ConfigParser()
+        try: #python 2
+            import ConfigParser as cfgparser
+        except: #python 3
+            import configparser as cfgparser
+        conf = cfgparser.ConfigParser()
         conf.read("03-000015-001_FCT.ini")
         self.customer = conf.get("product", "customer")
         self.pn = conf.get("product", "pn")
@@ -54,11 +58,16 @@ class ProductInfo():
         
 class TestInfo():
     def __init__(self):
-        import ConfigParser
-        conf = ConfigParser.ConfigParser()
+        try: #python 2
+            import ConfigParser as cfgparser
+        except: #python 3
+            import configparser as cfgparser
+        conf = cfgparser.ConfigParser()
         conf.read("03-000015-001_FCT.ini")
         self.station = conf.get("test", "station")
         self.fixtureSN = conf.get("test", "fixtureSN")
+        self.softwareName = conf.get("test", "softwarename")
+        self.softwareVersion = conf.get("test", "softwareversion")
 
 
 

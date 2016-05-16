@@ -25,6 +25,14 @@ class MyMainWindow(QMainWindow):
         
         self.initTest = InitTest()
         self.ui.lineEditComputerID.setText(_translate("MainWindow", self.initTest.get_mac_address(), None))
+
+        self.productInfo = ProductInfo()
+        self.ui.lineEditCustomer.setText(_translate("MainWindow", self.productInfo.customer, None))
+        self.ui.lineEditProdPN.setText(_translate("MainWindow", self.productInfo.pn, None))
+
+        self.testInfo = TestInfo()
+        self.ui.lineEditStation.setText(_translate("MainWindow", self.testInfo.station, None))
+        self.ui.lineEditFixtureSN.setText(_translate("MainWindow", self.testInfo.fixtureSN, None))
         
 class InitTest():
     #def __init__(self):
@@ -34,6 +42,25 @@ class InitTest():
         mac = uuid.UUID(int =  uuid.getnode()).hex[-12:]
         return ":".join([mac[e:e+2] for e in range(0,11,2)])
         #renurn mac
+
+class ProductInfo():
+    def __init__(self):
+        import ConfigParser
+        conf = ConfigParser.ConfigParser()
+        conf.read("03-000015-001_FCT.ini")
+        self.customer = conf.get("product", "customer")
+        self.pn = conf.get("product", "pn")
+        self.name = conf.get("product", "name")
+        
+class TestInfo():
+    def __init__(self):
+        import ConfigParser
+        conf = ConfigParser.ConfigParser()
+        conf.read("03-000015-001_FCT.ini")
+        self.station = conf.get("test", "station")
+        self.fixtureSN = conf.get("test", "fixtureSN")
+
+
 
         
 if __name__ == '__main__':

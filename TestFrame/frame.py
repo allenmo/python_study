@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 
 from PyQt4 import QtCore, QtGui
-import RPi.GPIO as GPIO
+#import RPi.GPIO as GPIO
 import time
 import threading
 

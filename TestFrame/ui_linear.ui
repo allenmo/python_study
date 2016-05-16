@@ -47,33 +47,33 @@
      <string>TestProgramName(Version)</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="okButton">
+   <widget class="QPushButton" name="startButton">
     <property name="geometry">
      <rect>
-      <x>410</x>
-      <y>200</y>
+      <x>150</x>
+      <y>160</y>
       <width>85</width>
       <height>27</height>
      </rect>
     </property>
     <property name="text">
-     <string>OK</string>
+     <string>Start</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="cancelButton">
+   <widget class="QPushButton" name="stopButton">
     <property name="geometry">
      <rect>
-      <x>464</x>
-      <y>274</y>
+      <x>150</x>
+      <y>190</y>
       <width>85</width>
       <height>27</height>
      </rect>
     </property>
     <property name="text">
-     <string>Cancel</string>
+     <string>Stop</string>
     </property>
    </widget>
-   <widget class="QWidget" name="">
+   <widget class="QWidget" name="layoutWidget">
     <property name="geometry">
      <rect>
       <x>17</x>
@@ -150,6 +150,9 @@
         <layout class="QVBoxLayout" name="verticalLayout_6">
          <item>
           <widget class="QLineEdit" name="lineEditCustomer">
+           <property name="enabled">
+            <bool>false</bool>
+           </property>
            <property name="sizePolicy">
             <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
              <horstretch>0</horstretch>
@@ -163,6 +166,9 @@
          </item>
          <item>
           <widget class="QLineEdit" name="lineEditProdPN">
+           <property name="enabled">
+            <bool>false</bool>
+           </property>
            <property name="text">
             <string/>
            </property>
@@ -173,6 +179,9 @@
          </item>
          <item>
           <widget class="QLineEdit" name="lineEditSN">
+           <property name="enabled">
+            <bool>false</bool>
+           </property>
            <property name="text">
             <string/>
            </property>
@@ -252,6 +261,9 @@
         <layout class="QVBoxLayout" name="verticalLayout_5">
          <item>
           <widget class="QLineEdit" name="lineEditStation">
+           <property name="enabled">
+            <bool>false</bool>
+           </property>
            <property name="sizePolicy">
             <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
              <horstretch>0</horstretch>
@@ -265,6 +277,9 @@
          </item>
          <item>
           <widget class="QLineEdit" name="lineEditFixtureSN">
+           <property name="enabled">
+            <bool>false</bool>
+           </property>
            <property name="text">
             <string/>
            </property>
@@ -275,8 +290,11 @@
          </item>
          <item>
           <widget class="QLineEdit" name="lineEditComputerID">
+           <property name="enabled">
+            <bool>false</bool>
+           </property>
            <property name="text">
-            <string>12-34-56-78-ab</string>
+            <string/>
            </property>
            <property name="placeholderText">
             <string/>
@@ -354,6 +372,9 @@
         <layout class="QVBoxLayout" name="verticalLayout_4">
          <item>
           <widget class="QLineEdit" name="lineEditOperator">
+           <property name="enabled">
+            <bool>false</bool>
+           </property>
            <property name="text">
             <string/>
            </property>
@@ -364,6 +385,9 @@
          </item>
          <item>
           <widget class="QLineEdit" name="lineEditErrorCode">
+           <property name="enabled">
+            <bool>false</bool>
+           </property>
            <property name="text">
             <string/>
            </property>
@@ -374,6 +398,9 @@
          </item>
          <item>
           <widget class="QLineEdit" name="lineEditErrorMsg">
+           <property name="enabled">
+            <bool>false</bool>
+           </property>
            <property name="text">
             <string/>
            </property>
@@ -387,6 +414,52 @@
       </layout>
      </item>
     </layout>
+   </widget>
+   <widget class="QTextEdit" name="textEditMsg">
+    <property name="geometry">
+     <rect>
+      <x>760</x>
+      <y>60</y>
+      <width>251</width>
+      <height>651</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_2">
+    <property name="geometry">
+     <rect>
+      <x>760</x>
+      <y>40</y>
+      <width>64</width>
+      <height>17</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Message:</string>
+    </property>
+   </widget>
+   <widget class="QTextEdit" name="textEdit">
+    <property name="geometry">
+     <rect>
+      <x>470</x>
+      <y>250</y>
+      <width>104</width>
+      <height>78</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton">
+    <property name="geometry">
+     <rect>
+      <x>540</x>
+      <y>400</y>
+      <width>99</width>
+      <height>27</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>PushButton</string>
+    </property>
    </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">

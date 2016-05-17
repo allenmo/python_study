@@ -34,7 +34,10 @@ class MyMainWindow(QMainWindow):
         self.ui.lineEditStation.setText(_translate("MainWindow", self.testInfo.station, None))
         self.ui.lineEditFixtureSN.setText(_translate("MainWindow", self.testInfo.fixtureSN, None))
         self.ui.labelSoftwareNameVersion.setText(_translate("MainWindow", self.testInfo.softwareName + "(V" + self.testInfo.softwareVersion + ")", None))
-        
+        if self.testInfo.askOperatorID == '1' :
+            self.operatorID, ok = QtGui.QInputDialog.getText(self, "Input Dialog", "Input your ID")
+            self.ui.lineEditOperator.setText(_translate("MainWindow", self.operatorID, None))
+
 class InitTest():
     #def __init__(self):
         
@@ -46,29 +49,21 @@ class InitTest():
 
 class ProductInfo():
     def __init__(self):
-        try: #python 2
-            import ConfigParser as cfgparser
-        except: #python 3
-            import configparser as cfgparser
-        conf = cfgparser.ConfigParser()
-        conf.read("03-000015-001_FCT.ini")
-        self.customer = conf.get("product", "customer")
-        self.pn = conf.get("product", "pn")
-        self.name = conf.get("product", "name")
-        
+        from configobj import ConfigObj
+        conf = ConfigObj("03-000015-001_FCT.ini", encoding='UTF8')
+        self.customer = conf['product']['customer']
+        self.pn = conf['product']['pn']
+        self.name = conf['product']['name']
+
 class TestInfo():
     def __init__(self):
-        try: #python 2
-            import ConfigParser as cfgparser
-        except: #python 3
-            import configparser as cfgparser
-        conf = cfgparser.ConfigParser()
-        conf.read("03-000015-001_FCT.ini")
-        self.station = conf.get("test", "station")
-        self.fixtureSN = conf.get("test", "fixtureSN")
-        self.softwareName = conf.get("test", "softwarename")
-        self.softwareVersion = conf.get("test", "softwareversion")
-
+        from configobj import ConfigObj
+        conf = ConfigObj("03-000015-001_FCT.ini", encoding='UTF8')
+        self.station = conf['test']['station']
+        self.fixtureSN = conf['test']['fixturesn']
+        self.softwareName = conf['test']['softwarename']
+        self.softwareVersion = conf['test']['softwareversion']
+        self.askOperatorID = conf['test']['askOperatorID']
 
 
         

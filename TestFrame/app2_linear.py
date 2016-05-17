@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from PyQt4.QtGui import QMainWindow
 from ui_linear import Ui_MainWindow
 from PyQt4 import QtCore, QtGui
@@ -35,8 +36,14 @@ class MyMainWindow(QMainWindow):
         self.ui.lineEditFixtureSN.setText(_translate("MainWindow", self.testInfo.fixtureSN, None))
         self.ui.labelSoftwareNameVersion.setText(_translate("MainWindow", self.testInfo.softwareName + "(V" + self.testInfo.softwareVersion + ")", None))
         if self.testInfo.askOperatorID == '1' :
-            self.operatorID, ok = QtGui.QInputDialog.getText(self, "Input Dialog", "Input your ID")
-            self.ui.lineEditOperator.setText(_translate("MainWindow", self.operatorID, None))
+            self.operatorID, self.btnCancelOk = QtGui.QInputDialog.getText(self, "Input Operator ID", "Input youri ID:")
+            if self.btnCancelOk == True :
+                self.ui.lineEditOperator.setText(_translate("MainWindow", self.operatorID, None))
+
+        
+
+
+
 
 class InitTest():
     #def __init__(self):

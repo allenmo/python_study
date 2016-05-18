@@ -104,6 +104,9 @@
            <property name="text">
             <string>Customer:</string>
            </property>
+           <property name="buddy">
+            <cstring>lineEditCustomer</cstring>
+           </property>
           </widget>
          </item>
          <item>
@@ -123,6 +126,9 @@
            <property name="text">
             <string>Product PN:</string>
            </property>
+           <property name="buddy">
+            <cstring>lineEditProdPN</cstring>
+           </property>
           </widget>
          </item>
          <item>
@@ -141,6 +147,9 @@
            </property>
            <property name="text">
             <string>SN:</string>
+           </property>
+           <property name="buddy">
+            <cstring>lineEditSN</cstring>
            </property>
           </widget>
          </item>
@@ -215,6 +224,9 @@
            <property name="text">
             <string>Station:</string>
            </property>
+           <property name="buddy">
+            <cstring>lineEditStation</cstring>
+           </property>
           </widget>
          </item>
          <item>
@@ -234,6 +246,9 @@
            <property name="text">
             <string>FixtureSN:</string>
            </property>
+           <property name="buddy">
+            <cstring>lineEditFixtureSN</cstring>
+           </property>
           </widget>
          </item>
          <item>
@@ -252,6 +267,9 @@
            </property>
            <property name="text">
             <string>ComputerID:</string>
+           </property>
+           <property name="buddy">
+            <cstring>lineEditComputerID</cstring>
            </property>
           </widget>
          </item>
@@ -326,6 +344,9 @@
            <property name="text">
             <string>Operator:</string>
            </property>
+           <property name="buddy">
+            <cstring>lineEditOperator</cstring>
+           </property>
           </widget>
          </item>
          <item>
@@ -345,6 +366,9 @@
            <property name="text">
             <string>ErrorCode:</string>
            </property>
+           <property name="buddy">
+            <cstring>lineEditErrorCode</cstring>
+           </property>
           </widget>
          </item>
          <item>
@@ -363,6 +387,9 @@
            </property>
            <property name="text">
             <string>ErrorMsg:</string>
+           </property>
+           <property name="buddy">
+            <cstring>lineEditErrorMsg</cstring>
            </property>
           </widget>
          </item>
@@ -443,6 +470,9 @@ p, li { white-space: pre-wrap; }
     </property>
     <property name="text">
      <string>Message:</string>
+    </property>
+    <property name="buddy">
+     <cstring>textEditMsg</cstring>
     </property>
    </widget>
   </widget>

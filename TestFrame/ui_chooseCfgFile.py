@@ -61,21 +61,20 @@ class Ui_DialogChooseCfgFile(object):
         if os.path.isfile(LvFile):
             with open(LvFile, "r") as f:
                 kvs = f.readlines()
-                i = 0
-                for line in kvs:
+                for idx, line in enumerate(kvs):
                     kv = line.split(",")
                     #print("len(kv)=%d"%len(kv))
                     if len(kv) ==2:
                         item = QtGui.QListWidgetItem()
                         self.listWidgetModel.addItem(item)
-                        addedItem = self.listWidgetModel.item(i)
+                        addedItem = self.listWidgetModel.item(idx)
                         #print("type(itme):%s"%type(item))
                         addedItem.setText(_translate("DialogChooseCfgFile", kv[0], None))
-                        i += 1
 
 
 
     def accept(self, DialogChooseCfgFile):
+        pirnt("in accept()")
         pass
 
     def retranslateUi(self, DialogChooseCfgFile):

@@ -62,12 +62,6 @@ class MyMainWindow(QMainWindow):
                     if len(lineContent) > 0:
                         i+=1    
                 if i > 1 :
-                    #from ui_chooseCfgFile import Ui_DialogChooseCfgFile
-                    #self.modelChooseDialog = QtGui.QDialog()
-                    ##Ui_DialogChooseCfgFile()
-                    #self.modelChooseDialog.setupUi(Ui_DialogChooseCfgFile)
-                    #from DateDialog import DateDialog
-                    #date, time, ok = DateDialog.getDateTime()
                     from ui_chooseCfgFile import Ui_DialogChooseCfgFile
                     a, b = Ui_DialogChooseCfgFile.getModel()
 

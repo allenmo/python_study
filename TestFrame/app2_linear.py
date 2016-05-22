@@ -66,8 +66,10 @@ class MyMainWindow(QMainWindow):
                     #self.modelChooseDialog = QtGui.QDialog()
                     ##Ui_DialogChooseCfgFile()
                     #self.modelChooseDialog.setupUi(Ui_DialogChooseCfgFile)
-                    from DateDialog import DateDialog
-                    date, time, ok = DateDialog.getDateTime()
+                    #from DateDialog import DateDialog
+                    #date, time, ok = DateDialog.getDateTime()
+                    from ui_chooseCfgFile import Ui_DialogChooseCfgFile
+                    a, b = Ui_DialogChooseCfgFile.getModel()
 
 class InitTest():
     #def __init__(self):

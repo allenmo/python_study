@@ -55,6 +55,28 @@ class Ui_DialogChooseCfgFile(object):
         QtCore.QObject.connect(self.buttonBox, QtCore.SIGNAL(_fromUtf8("rejected()")), DialogChooseCfgFile.reject)
         QtCore.QMetaObject.connectSlotsByName(DialogChooseCfgFile)
 
+    def readLvFile(self, DialogChooseCfgFile):
+        import os
+        LvFile = "Lv.ini"
+        if os.path.isfile(LvFile):
+            with open(LvFile, "r") as f:
+                kvs = f.readlines()
+                for idx, line in enumerate(kvs):
+                    kv = line.split(",")
+                    #print("len(kv)=%d"%len(kv))
+                    if len(kv) ==2:
+                        item = QtGui.QListWidgetItem()
+                        self.listWidgetModel.addItem(item)
+                        addedItem = self.listWidgetModel.item(idx)
+                        #print("type(itme):%s"%type(item))
+                        addedItem.setText(_translate("DialogChooseCfgFile", kv[0], None))
+
+
+
+    def accept(self, DialogChooseCfgFile):
+        pirnt("in accept()")
+        pass
+
     def retranslateUi(self, DialogChooseCfgFile):
         DialogChooseCfgFile.setWindowTitle(_translate("DialogChooseCfgFile", "Dialog", None))
         self.label.setText(_translate("DialogChooseCfgFile", "Please choose Model:", None))
@@ -70,6 +92,7 @@ class Ui_DialogChooseCfgFile(object):
         ui = Ui_DialogChooseCfgFile()
         ui.setupUi(DialogChooseCfgFile)
         DialogChooseCfgFile.show()
+        ui.readLvFile(DialogChooseCfgFile)
         DialogChooseCfgFile.exec_()
         return "abc", "cdef"
         

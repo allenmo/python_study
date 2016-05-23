@@ -40,8 +40,6 @@ class Ui_DialogChooseCfgFile(object):
         self.verticalLayout.addWidget(self.label)
         self.listWidgetModel = QtGui.QListWidget(DialogChooseCfgFile)
         self.listWidgetModel.setObjectName(_fromUtf8("listWidgetModel"))
-        item = QtGui.QListWidgetItem()
-        self.listWidgetModel.addItem(item)
         self.verticalLayout.addWidget(self.listWidgetModel)
         self.buttonBox = QtGui.QDialogButtonBox(DialogChooseCfgFile)
         self.buttonBox.setOrientation(QtCore.Qt.Horizontal)
@@ -55,54 +53,7 @@ class Ui_DialogChooseCfgFile(object):
         QtCore.QObject.connect(self.buttonBox, QtCore.SIGNAL(_fromUtf8("rejected()")), DialogChooseCfgFile.reject)
         QtCore.QMetaObject.connectSlotsByName(DialogChooseCfgFile)
 
-    def readLvFile(self, DialogChooseCfgFile):
-        import os
-        LvFile = "Lv.ini"
-        if os.path.isfile(LvFile):
-            with open(LvFile, "r") as f:
-                kvs = f.readlines()
-                for idx, line in enumerate(kvs):
-                    kv = line.split(",")
-                    #print("len(kv)=%d"%len(kv))
-                    if len(kv) ==2:
-                        item = QtGui.QListWidgetItem()
-                        self.listWidgetModel.addItem(item)
-                        addedItem = self.listWidgetModel.item(idx)
-                        #print("type(itme):%s"%type(item))
-                        addedItem.setText(_translate("DialogChooseCfgFile", kv[0], None))
-
-
-
-    def accept(self, DialogChooseCfgFile):
-        pirnt("in accept()")
-        pass
-
     def retranslateUi(self, DialogChooseCfgFile):
         DialogChooseCfgFile.setWindowTitle(_translate("DialogChooseCfgFile", "Dialog", None))
         self.label.setText(_translate("DialogChooseCfgFile", "Please choose Model:", None))
-        __sortingEnabled = self.listWidgetModel.isSortingEnabled()
-        self.listWidgetModel.setSortingEnabled(False)
-        item = self.listWidgetModel.item(0)
-        item.setText(_translate("DialogChooseCfgFile", "kkk", None))
-        self.listWidgetModel.setSortingEnabled(__sortingEnabled)
-
-    @staticmethod
-    def getModel(parent = None ):
-        DialogChooseCfgFile = QtGui.QDialog()
-        ui = Ui_DialogChooseCfgFile()
-        ui.setupUi(DialogChooseCfgFile)
-        DialogChooseCfgFile.show()
-        ui.readLvFile(DialogChooseCfgFile)
-        DialogChooseCfgFile.exec_()
-        return "abc", "cdef"
-        
-
-if __name__ == "__main__":
-    import sys
-    app = QtGui.QApplication(sys.argv)
-    DialogChooseCfgFile = QtGui.QDialog()
-    ui = Ui_DialogChooseCfgFile()
-    ui.setupUi(DialogChooseCfgFile)
-    DialogChooseCfgFile.show()
-    sys.exit(app.exec_())
 

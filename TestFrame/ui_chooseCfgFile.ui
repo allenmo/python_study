@@ -37,13 +37,7 @@
     </widget>
    </item>
    <item>
-    <widget class="QListWidget" name="listWidgetModel">
-     <item>
-      <property name="text">
-       <string>kkk</string>
-      </property>
-     </item>
-    </widget>
+    <widget class="QListWidget" name="listWidgetModel"/>
    </item>
    <item>
     <widget class="QDialogButtonBox" name="buttonBox">

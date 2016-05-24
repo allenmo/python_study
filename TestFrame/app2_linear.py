@@ -62,8 +62,10 @@ class MyMainWindow(QMainWindow):
                     if len(lineContent) > 0:
                         i+=1    
                 if i > 1 :
-                    from ui_chooseCfgFile import Ui_DialogChooseCfgFile
-                    a, b = Ui_DialogChooseCfgFile.getModel()
+                    #from ui_chooseCfgFile import Ui_DialogChooseCfgFile
+                    #a, b = Ui_DialogChooseCfgFile.getModel()
+                    from ChooseCfgFile import ChooseCfgFile
+                    a, b = ChooseCfgFile.getModel(parentDlg=self)
 
 class InitTest():
     #def __init__(self):

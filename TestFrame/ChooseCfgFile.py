@@ -43,9 +43,10 @@ class ChooseCfgFile(Ui_DialogChooseCfgFile):
         dialogChoose = ChooseCfgFile()
         dialogChoose.setupUi(dialog)
         #dialog.setSizeGripEnabled(True)
-        dialog.show()
+        #dialog.show() # none modal type show the window
         #print("isSizeGripEnabled:%s"%dialog.isSizeGripEnabled())
         dialogChoose.readLvFile(dialog)
-        dialog.exec_()
+        result = dialog.exec_() # modal type show the window
+        print("result:%d"% result)
         return "abc", "cdef"
 

@@ -1,4 +1,5 @@
 from PyQt4 import QtGui
+from 001_dialog import *
 
 if __name__=='__main__':
     import sys

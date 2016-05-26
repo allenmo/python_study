@@ -46,7 +46,12 @@ class ChooseCfgFile(Ui_DialogChooseCfgFile):
         #dialog.show() # none modal type show the window
         #print("isSizeGripEnabled:%s"%dialog.isSizeGripEnabled())
         dialogChoose.readLvFile(dialog)
-        result = dialog.exec_() # modal type show the window
-        print("result:%d"% result)
+        btnIndex = dialog.exec_() # modal type show the window
+        # print("result:%d"% btnIndex)
+        if btnIndex == 1:
+            print("ok pressed")
+        elif btnIndex == 0:
+            print("Cancel pressed")
+
         return "abc", "cdef"
 

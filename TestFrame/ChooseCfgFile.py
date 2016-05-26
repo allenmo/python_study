@@ -33,8 +33,8 @@ class ChooseCfgFile(Ui_DialogChooseCfgFile):
                         #print("type(itme):%s"%type(item))
                         addedItem.setText(_translate("DialogChooseCfgFile", kv[0], None))
 
-#    def accept(self)
-#        print("in my accept()")
+    def accept(self):
+        print("in my accept()")
 #        self.accept(self)
    
     @staticmethod
@@ -42,16 +42,10 @@ class ChooseCfgFile(Ui_DialogChooseCfgFile):
         dialog = QtGui.QDialog(parent=parentDlg, modal=True)
         dialogChoose = ChooseCfgFile()
         dialogChoose.setupUi(dialog)
-        #dialog.setSizeGripEnabled(True)
         #dialog.show() # none modal type show the window
-        #print("isSizeGripEnabled:%s"%dialog.isSizeGripEnabled())
         dialogChoose.readLvFile(dialog)
         btnIndex = dialog.exec_() # modal type show the window
-        # print("result:%d"% btnIndex)
-        if btnIndex == 1:
-            print("ok pressed")
-        elif btnIndex == 0:
-            print("Cancel pressed")
+        print("btnIndex:%d"% btnIndex)
 
         return "abc", "cdef"
 

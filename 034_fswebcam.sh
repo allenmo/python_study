@@ -1,5 +1,5 @@
 #!/bin/bash
-
+mkdir -pv ~/webcam
 DATE=$(date +"%Y-%m-%d_%H-%M-%S")
 fswebcam -r 640x480 --no-banner ~/webcam/$DATE.jpg
 #fswebcam -r 1024x768 --no-banner ~/webcam/$DATE.jpg

@@ -1,0 +1,68 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+Dialog	022_layout.py	/^class Dialog(QtGui.QDialog):$/;"	c
+HOST	018_socket_server.py	/^HOST = ''$/;"	v
+Logger	021_qt_logger_time.py	/^class Logger(QtGui.QWidget):$/;"	c
+NumButtons	022_layout.py	/^	NumButtons = 4$/;"	v	class:Dialog
+NumGridRows	022_layout.py	/^	NumGridRows = 3$/;"	v	class:Dialog
+PORT	018_socket_server.py	/^PORT = 7000$/;"	v
+__init__	021_qt_logger_time.py	/^	def __init__(self, *args):$/;"	m	class:Logger
+__init__	022_layout.py	/^	def __init__(self):$/;"	m	class:Dialog
+app	021_qt_logger_time.py	/^	app = QtGui.QApplication(sys.argv)$/;"	v	class:Logger
+app	022_layout.py	/^	app = QtGui.QApplication(sys.argv)$/;"	v	class:Dialog
+asctime	013_time.py	/^asctime = time.asctime(time.localtime(time.time()))$/;"	v
+c	005_list.py	/^c = [5,2,10,48,32,16,49,10,11,32,64,55,34,45,41,23,26,27,72,18]$/;"	v
+content	009_read_write_file.py	/^	content = fn.readlines()$/;"	v
+content	012_module.py	/^content = dir(math)$/;"	v
+content	013_time.py	/^content = dir(time)$/;"	v
+createHorizontalGroupBox	022_layout.py	/^	def createHorizontalGroupBox(self):$/;"	m	class:Dialog
+createMenu	022_layout.py	/^	def createMenu(self):$/;"	m	class:Dialog
+data	018_socket_server.py	/^	data = conn.recv(1024)$/;"	v
+dialog	022_layout.py	/^	dialog = Dialog()$/;"	v	class:Dialog
+f	009_read_write_file.py	/^f = open("output.txt","w")$/;"	v
+fear	005_list.py	/^fear =  ["Spiders", "Ghosts", "Dracula"]$/;"	v
+filename	009_read_write_file.py	/^filename = "readme.txt"$/;"	v
+flag	016_regular_expressions.py	/^flag = "ghosts" in s$/;"	v
+hello	hello.py	/^def hello():$/;"	f
+host	017_socket_client.py	/^host = 'www.allstack.net'$/;"	v
+k	008_dictionary.py	/^k = { 'EN':'English', 'FR':'French' }$/;"	v
+line	018_socket_server.py	/^	line = data.decode('UTF-8')$/;"	v
+line	018_socket_server.py	/^	line = line.replace("\\n", "")$/;"	v
+log_timestamp	021_qt_logger_time.py	/^	def log_timestamp(self):$/;"	m	class:Logger
+logger	021_qt_logger_time.py	/^	logger = Logger()$/;"	v	class:Logger
+matcher	016_regular_expressions.py	/^matcher = re.match('\\*\\d\\Z',sss)$/;"	v
+matcher	016_regular_expressions.py	/^matcher = re.match('\\d{3}\\Z',ss)$/;"	v
+port	017_socket_client.py	/^port = 7000 # web$/;"	v
+pythagoras	004_function.py	/^def pythagoras(a,b):$/;"	f
+pythagoras2	004_function.py	/^def pythagoras2(a,b):$/;"	f
+remote_ip	017_socket_client.py	/^	remote_ip = socket.gethostbyname( host)$/;"	v
+remote_ip	017_socket_client.py	/^remote_ip = "127.0.0.1"$/;"	v
+reply	017_socket_client.py	/^reply = s.recv(1024).decode()$/;"	v
+request	017_socket_client.py	/^request = "GET \/ HTTP\/1.0\\r\\n\\r\\n"$/;"	v
+result	004_function.py	/^result = pythagoras2(3,4)$/;"	v
+root	020_tk.py	/^root = Tk()$/;"	v
+s	015_strings_and_sub_strings.py	/^s="Hello World"$/;"	v
+s	016_regular_expressions.py	/^s="Are you afraid of ghosts?"$/;"	v
+s	017_socket_client.py	/^	s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)$/;"	v
+s	018_socket_server.py	/^s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)$/;"	v
+slice	015_strings_and_sub_strings.py	/^slice=s[0:5]$/;"	v
+ss	016_regular_expressions.py	/^ss="123"$/;"	v
+sss	016_regular_expressions.py	/^sss="a2bc"$/;"	v
+ticks	013_time.py	/^ticks = time.time()$/;"	v
+timenow	013_time.py	/^timenow = time.localtime(time.time())$/;"	v
+top	020_tk.py	/^top = Toplevel()$/;"	v
+x	001_if.py	/^x = int(input("Tell X"))$/;"	v
+x	003_while.py	/^    x = int(input("Guess a number:"))$/;"	v
+x	003_while.py	/^x=0$/;"	v
+x	007_tuple.py	/^x=(5,)$/;"	v
+x	010_statistics.py	/^x = [22,2,15,3,6,17,8,16,8,3,10,12,16,12,9]$/;"	v
+x	011_line_charts.py	/^x = [2,3,4,7,9,13,15,17]$/;"	v
+x	012_module.py	/^x = math.sin(1)$/;"	v
+x	014_comment.py	/^x = 5$/;"	v
+y	001_if.py	/^y=2$/;"	v
+y	001_if.py	/^y=y+1$/;"	v
+y	007_tuple.py	/^y=("hello","are","you","ok")$/;"	v

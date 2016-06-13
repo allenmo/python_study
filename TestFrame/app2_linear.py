@@ -1,3 +1,4 @@
+#!/usr/bin/python
 # -*- coding: utf-8 -*-
 from PyQt4.QtGui import QMainWindow
 from ui_linear import Ui_MainWindow

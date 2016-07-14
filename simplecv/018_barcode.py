@@ -13,6 +13,5 @@ while display.isNotDone():
     img = cam.getImage()
     barcodes = img.findBarcode()
     img.show()
-    if barcodes and len(barcodes)==1:
-        data = barcodes[0].data
-        print data
+    if type(barcodes) == FeatureSet and len(barcodes) == 1:
+        print barcodes[0].data

@@ -13,7 +13,7 @@ try:
     response = urllib2.urlopen(request)
     
     content = response.read()#.decode('utf-8')
-    pattern = re.compile('<div.*?author clearfix">.*?<h2>(.*?)</h2>.*?<div.*?"content">(.*?)</div>.*?<i.*?"number">(.*?)</i>', re.S)
+    pattern = re.compile('<div.*?author clearfix">.*?<h2>(.*?)</h2>.*?<div.*?"content">(.*?)</div>.*?<(?!img).*?<i.*?"number">(.*?)</i>', re.S)
     items = re.findall(pattern, content)
     for item in items:
         print item[0].strip(),"\n", item[1].strip(),"\n", item[2].strip(), "\n------------------------------------------------"

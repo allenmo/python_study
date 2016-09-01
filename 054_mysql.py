@@ -1,6 +1,6 @@
 import MySQLdb
 
-conn = MySQLdb.connect("192.168.1.188", "pyer", "abc-123", "testdb")
+conn = MySQLdb.connect("192.168.1.77", "pyer", "abc-123", "testdb")
 cur = conn.cursor()
 cur.execute("SELECT VERSION()")
 data = cur.fetchone()

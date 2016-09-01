@@ -4,7 +4,7 @@ import re
 # 匹配如下内容：单词+空格+单词+任意字符
 m = re.match(r'(\w+) (\w+)(?P<sign>.*)', 'hello world!')
 
-if m:
+if m:#不存在能匹配的子串时将返回None
     print "m.string:", m.string
     print "m.re:", m.re
     print "m.pos:", m.pos

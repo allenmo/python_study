@@ -4,7 +4,7 @@ import urllib
 import urllib2
 import re
 
-page =1
+page =11
 url = 'http://www.qiushibaike.com/hot/page/' + str(page)
 user_agent = 'Mozilla/4.0 (compatible; MSIE 5.5; Windows NT)'
 headers = { 'User-Agent' : user_agent}
@@ -13,10 +13,14 @@ try:
     response = urllib2.urlopen(request)
     
     content = response.read()#.decode('utf-8')
-    pattern = re.compile('<div.*?author clearfix">.*?<h2>(.*?)</h2>.*?<div.*?"content">(.*?)</div>.*?<(?!img).*?<i.*?"number">(.*?)</i>', re.S)
+    pattern = re.compile('<div.*?author clearfix">.*?<h2>(.*?)</h2>.*?<div.*?"content">(.*?)</div>(.*?)<i class="number">(.*?)</i>', re.S)
     items = re.findall(pattern, content)
     for item in items:
-        print item[0].strip(),"\n", item[1].strip(),"\n", item[2].strip(), "\n------------------------------------------------"
+        haveImag = re.search("img", item[2])
+        if not haveImag:
+            replaceBR = re.compile('<br/>')
+            text = re.sub(replaceBR, '\n', item[1])
+            print text.strip(),"\n", item[0].strip(),"   ", item[3].strip(), "\n------------------------------------------------"
 
 
 except urllib2.URLError, e:

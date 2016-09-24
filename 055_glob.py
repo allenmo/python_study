@@ -13,6 +13,8 @@ print r"glob.glob(r'mv.jpg*')", "\n", glob.glob(r'mv.jpg*'), '\n'
 
 print r"glob.glob(r'[m-r]*')", "\n", glob.glob(r'[m-r]*'), "\n"
 
+print r"glob.glob(r'[!m-r]*')", "\n", glob.glob(r'[!m-r]*'), "\n"
+
 #---------------------------------
 #iglob
 #---------------------------------

@@ -15,4 +15,8 @@ print resp, "\n"
 jobj = json.loads(resp)
 print jobj, "\n"
 numbers = jobj['numbers']
-print numbers
+print numbers, "\n"
+fruits = jobj['fruits']
+print fruits, "\n"
+fruit1 = fruits['a']
+print fruit1, "\n"

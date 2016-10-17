@@ -2,4 +2,4 @@
 
 
 # ignore wildcart file
-*.bin
+*/*.bin

@@ -1,5 +1,6 @@
 # ignore file
-
+fw/*.bin
+fw/fw_archive/*.bin
 
 # ignore wildcart file
-*/*.bin
+*.bin

@@ -13,6 +13,7 @@ class Fw(object):
         self.archive_folder = 'fw_archive'
         self.temp_download_folder = '.temp_fw'
         self.check_and_create_support_folder()
+        self.debug_msg = ""
 
     def check_and_create_support_folder(self):
         if not os.path.exists(self.archive_folder):
@@ -95,14 +96,14 @@ class Fw(object):
         if os.path.isfile(fw_pathname):
             s = self.file_crc32_checksum(fw_pathname)
             if s == self.db_respond_json_obj['fw_checksum']:
-                fw.fw_ok = True
-                fw.fw_err_msg = ""
+                self.fw_ok = True
+                self.fw_err_msg = ""
             else:
-                fw.fw_ok = False
-                fw.fw_err_msg = "new fw file crc32 checksum error"
+                self.fw_ok = False
+                self.fw_err_msg = "new fw file crc32 checksum error"
         else:
-            fw.fw_ok = False
-            fw.fw_err_msg = "new fw file not exist"
+            self.fw_ok = False
+            self.fw_err_msg = "new fw file not exist"
         return self.fw_ok
 
     def getDateTimeStr(self):
@@ -129,25 +130,38 @@ class Fw(object):
         cf.write(open(ini_pathname, "w"))
 
     def if_ok_for_download(self):
-        if self.local_only == True:
-            fw_ok = self.if_local_fw_file_exist_and_correct()
-            # print self.fw_err_msg
-            # print "in case 1"
-        else:
-            if self.if_new_fw_available() == True:
+        if self.local_only == True: # local only
+            if self.if_local_fw_file_exist_and_correct() == True:
+                fw_ok = True
+                self.debug_msg = "in case 1, local only, origine still ok"
+            else:
+                fw_ok = False
+                self.debug_msg = "in case 2, local only, origine Not exist or checksum error"
+        else: # check net
+            if self.if_new_fw_available() == True: # new available
                 new_fw_file_pathname = self.download_new_fw()
                 if self.if_new_fw_file_exist_and_correct(new_fw_file_pathname) == True:
                     self.write_fw_info_to_ini(self.ini_file_pathname)
                     self.mv_fw_to_sw_root(new_fw_file_pathname)
-                    # print self.fw_err_msg
-                    # print "in case 2"
                     fw_ok = True
+                    self.debug_msg = "in case 3, check net, new available, download ok"
                 else:
                     fw_ok = False
-            else:
-                fw_ok = self.if_local_fw_file_exist_and_correct()
-                # print self.fw_err_msg
-                # print "in case 3"
+                    self.debug_msg = "in case 4, check net, new available, download fail or checksum error"
+            else: # No new available
+                if self.if_local_fw_file_exist_and_correct() == True:
+                    fw_ok = True
+                    self.debug_msg = "in case 5, check net, No new available, origine still ok"
+                else: # origine not exist or checksum error
+                    new_fw_file_pathname = self.download_new_fw() #download latest
+                    if self.if_new_fw_file_exist_and_correct(new_fw_file_pathname) == True:
+                       self.write_fw_info_to_ini(self.ini_file_pathname)
+                       self.mv_fw_to_sw_root(new_fw_file_pathname)
+                       fw_ok = True
+                       self.debug_msg = "in case 6, check net, No new available, origine Not exist or checksum error, download latest ok"
+                    else:
+                       fw_ok = False
+                       self.debug_msg = "in case 7, check net, No new available, origine Not exist or checksum error, download latest Fail"
         return fw_ok
 
 if __name__ == '__main__':

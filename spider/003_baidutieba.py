@@ -23,10 +23,10 @@ class Tool:
     def replace(self,x):
         x = re.sub(self.removeImg, "", x)
         x = re.sub(self.removeAddr, "", x)
-        x = re.sub(self,replaceLine, "\n", x)
-        x = re.sub(self,replaceTD, "\t", x)
-        x = re.sub(self,replacePara, "\n", x)
-        x = re.sub(self,replaceBR, "\n", x)
+        x = re.sub(self.replaceLine, "\n", x)
+        x = re.sub(self.replaceTD, "\t", x)
+        x = re.sub(self.replacePara, "\n", x)
+        x = re.sub(self.replaceBR, "\n", x)
         x = re.sub(self.removeExtraTag, "", x)
         #strip()将前后多余内容删除
         return x.strip()
@@ -39,6 +39,7 @@ class BDTB:
     def __init__(self, baseUrl, seeLZ):
         self.baseURL = baseUrl
         self.seeLZ = '?see_lz=' + str(seeLZ)
+        self.tool = Tool()
 
     #传入页码，获取该页贴子的html代码
     def getPage(self, pageNum):
@@ -48,9 +49,9 @@ class BDTB:
             response = urllib2.urlopen(request).read()
             #print response.read()
             return response
-        except urllib2.URLError, f:
-            if hasattr(f, "reason"):
-                print "连接百度贴吧失败， 错误原因", f.reason
+        except urllib2.URLError, e:
+            if hasattr(e, "reason"):
+                print "连接百度贴吧失败， 错误原因", e.reason
                 return None
 
     #获取帖子标题
@@ -78,9 +79,11 @@ class BDTB:
     def getContent(self,page):
         pattern = re.compile('<div id="post_content_.*?>(.*?)</div>',re.S)
         items = re.findall(pattern,page)
+        floor = 1
         for item in items:
-            print "------------------------------------------------------\n",item.strip()
-
+            print "\n", floor , "楼---------------------------------------------------------------------------------------------------------------------\n"
+            print self.tool.replace(item)
+            floor += 1
 
 
 baseURL = 'http://tieba.baidu.com/p/3138733512'
